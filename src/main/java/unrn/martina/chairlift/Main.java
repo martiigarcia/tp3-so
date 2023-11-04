@@ -10,13 +10,11 @@ public class Main {
         int cantidadSillas = 3;
 
         ReentrantLock lock = new ReentrantLock(true);
-        ReentrantLock lockk = new ReentrantLock(true);
         Condition sillaDisponible = lock.newCondition();
         Condition sillaLlena = lock.newCondition();
-        ReentrantLock contadorLock = new ReentrantLock();
 
         for (int i = 1; i <= cantidadEsquiadores; i++) {
-            new Esquiador(i, lock, sillaDisponible, sillaLlena, contadorLock, lockk).start();
+            new Esquiador(i, lock, sillaDisponible, sillaLlena).start();
         }
 
         for (int i = 1; i <= cantidadSillas; i++) {

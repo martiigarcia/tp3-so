@@ -6,23 +6,17 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Esquiador extends Thread {
     private int id;
     private ReentrantLock lock;
-    private ReentrantLock lockk;
     private Condition sillaDisponible;
     private Condition sillaLlena;
-    private ReentrantLock contadorLock;
-    private int contador;
 
-    public Esquiador(int id, ReentrantLock lock, Condition sillaDisponible, Condition sillaLlena, ReentrantLock contadorLock, ReentrantLock lockk) {
+
+    public Esquiador(int id, ReentrantLock lock, Condition sillaDisponible, Condition sillaLlena) {
         this.id = id;
         this.lock = lock;
-        this.lockk = lockk;
         this.sillaDisponible = sillaDisponible;
         this.sillaLlena = sillaLlena;
-        this.contadorLock = contadorLock;
-        this.contador = 0;
     }
 
-    // Run de objeto Esquiador:
     @Override
     public void run() {
         try {

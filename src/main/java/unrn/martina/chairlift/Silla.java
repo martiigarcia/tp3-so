@@ -7,7 +7,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class Silla extends Thread {
     private int id;
     private ReentrantLock lock;
-    private ReentrantLock sillaUnica = new ReentrantLock(true);
     private Condition sillaDisponible;
     private Condition sillaLlena;
     private int contador = 0;
@@ -19,7 +18,6 @@ public class Silla extends Thread {
         this.sillaLlena = sillaLlena;
     }
 
-    //Run del objeto Silla:
     @Override
     public void run() {
         try {
