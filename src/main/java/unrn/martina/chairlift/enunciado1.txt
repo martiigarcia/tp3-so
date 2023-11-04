@@ -1,0 +1,13 @@
+Aerosilla
+Se trata de simular mediante el uso de algun mecanismo de sincronización que usted elija, el
+comportamiento sincronizado de una aerosilla inteligente en el mismo centro invernal de ski. El
+funcionamiento es el siguiente:
+Existen en este centro N esquiadores que hacen cola para tomar la silla, toman la silla, suben
+hasta la cima de la montaña, liberan la silla y luego esquían para volver a repetir el ciclo indefinidamente.
+Por otra parte, la aerosilla está compuesta de M sillas cuádruples (suben hasta 4 esquiadores),
+cada una de las cuales aguarda en la base hasta que se complete su capacidad (4) y empieza a subir,
+una vez que alcanza la cima, la silla es liberada por los 4 esquiadores y vuelve a bajar para repetir
+nuevamente el ciclo.
+Escriba un programa en el que simule los esquiadores, las sillas y toodo lo que considere
+necesario, sincronizando los mismos utilizando el mecaenismo de sincronización que considere
+más adecuado
