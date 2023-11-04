@@ -1,34 +1,31 @@
 package unrn.martina.chairlift;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static int CONTADOR_ESQUIADORES = 0;
+
+    public static void main(String[] args) throws InterruptedException {
         int cantidadEsquiadores = 12;
-        int cantidadSillas = 3;
+        int cantidadAerosillas = 3;
+        Semaphore barreraDeAerosillas = new Semaphore(1);
 
         ReentrantLock lock = new ReentrantLock(true);
-        Condition sillaDisponible = lock.newCondition();
-        Condition sillaLlena = lock.newCondition();
+        Condition aerosillaDisponible = lock.newCondition();
+        Condition aerosillaLlena = lock.newCondition();
+        ReentrantLock contadorEsquiadoresLock = new ReentrantLock(true);
+
 
         for (int i = 1; i <= cantidadEsquiadores; i++) {
-            new Esquiador(i, lock, sillaDisponible, sillaLlena).start();
+            new Esquiador(i, lock, aerosillaDisponible, aerosillaLlena, contadorEsquiadoresLock).start();
         }
 
-        for (int i = 1; i <= cantidadSillas; i++) {
-            new Silla(i, lock, sillaDisponible, sillaLlena).start();
+        for (int i = 1; i <= cantidadAerosillas; i++) {
+            new Aerosilla(i, lock, aerosillaDisponible, aerosillaLlena, barreraDeAerosillas).start();
         }
 
     }
 }
-
-//        Silla[] sillas = new Silla[cantidadSillas];
-//        Thread[] hilosSillas = new Thread[cantidadSillas];
-//
-//        for (int i = 0; i < cantidadSillas; i++) {
-//            sillas[i] = new Silla(i, lock, sillaDisponible, sillaLlena, monitor);
-//            hilosSillas[i] = new Thread(sillas[i]);
-//            hilosSillas[i].start();
-//        }
