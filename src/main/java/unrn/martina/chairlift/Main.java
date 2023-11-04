@@ -3,9 +3,7 @@ package unrn.martina.chairlift;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MainPrueba {
-
-//    public static int CONTADOR = 0;
+public class Main {
 
     public static void main(String[] args) {
         int cantidadEsquiadores = 12;
@@ -25,6 +23,9 @@ public class MainPrueba {
             new Silla(i, lock, sillaDisponible, sillaLlena).start();
         }
 
+    }
+}
+
 //        Silla[] sillas = new Silla[cantidadSillas];
 //        Thread[] hilosSillas = new Thread[cantidadSillas];
 //
@@ -33,5 +34,3 @@ public class MainPrueba {
 //            hilosSillas[i] = new Thread(sillas[i]);
 //            hilosSillas[i].start();
 //        }
-    }
-}
